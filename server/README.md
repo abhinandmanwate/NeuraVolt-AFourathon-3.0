@@ -1,5 +1,4 @@
-This is step by step guid to build the Backend of the Cab Management App, If you follow this you can build backend for the app:
-
+This is step by step guid to build the Backend of the Cab Management App, If you follow this you can build backend for the app
  cab management application using the first approach, where MySQL is installed before Docker:
 
 1. Set up an AWS EC2 instance:
