@@ -1,0 +1,3 @@
+/*           /index.html   200
+/driver      /index.html   200
+/cab         /index.html   200
