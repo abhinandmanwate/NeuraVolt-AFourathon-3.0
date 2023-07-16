@@ -45,7 +45,9 @@ const MCabTable = ({ rows, onEditClick, getAssignedDriver, onCabUpdate }) => {
 
   const handleCabDelete = (cabRegistrationNumber) => {
     axios
-      .delete(`http://${Config.apiHost}:${Config.apiPort}/${Config.apiCab}/${cabRegistrationNumber}/${Config.driver}`)
+      .delete(
+        `${Config.apiRequest}://${Config.apiHost}:${Config.apiPort}/${Config.apiCab}/${cabRegistrationNumber}/${Config.driver}`
+      )
       .then(() => {
         fetchAssignedDrivers();
         onCabUpdate();

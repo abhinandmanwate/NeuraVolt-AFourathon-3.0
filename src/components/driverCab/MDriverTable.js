@@ -31,7 +31,9 @@ const MDriverTable = ({ rows, onEditClick, assignedCabs, onDriverUpdate }) => {
 
   const handleDriverDelete = (driverId) => {
     axios
-      .delete(`http://${Config.apiHost}:${Config.apiPort}/${Config.apiDriver}/${driverId}/${Config.cab}`)
+      .delete(
+        `${Config.apiRequest}://${Config.apiHost}:${Config.apiPort}/${Config.apiDriver}/${driverId}/${Config.cab}`
+      )
       .then(() => {
         onDriverUpdate();
       })

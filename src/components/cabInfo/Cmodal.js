@@ -77,7 +77,7 @@ const Dmodal = ({ closeModal, defaultValue }) => {
     console.log(newCabData);
     try {
       const response = await axios.post(
-        `http://${Config.apiHost}:${Config.apiPort}/${Config.apiCab}`,
+        `${Config.apiRequest}://${Config.apiHost}:${Config.apiPort}/${Config.apiCab}`,
         newCabData
       );
       console.log(response.data);
@@ -89,7 +89,7 @@ const Dmodal = ({ closeModal, defaultValue }) => {
   const updateCab = async (updatedCabData) => {
     try {
       const response = await axios.put(
-        `http://${Config.apiHost}:${Config.apiPort}/${Config.apiCab}`,
+        `${Config.apiRequest}://${Config.apiHost}:${Config.apiPort}/${Config.apiCab}`,
         updatedCabData
       );
       console.log(response.data);

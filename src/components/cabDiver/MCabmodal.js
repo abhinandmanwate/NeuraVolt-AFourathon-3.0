@@ -20,7 +20,7 @@ const MCabModal = ({
   const handleUpdate = () => {
     axios
       .put(
-        `http://${Config.apiHost}:${Config.apiPort}/${Config.apiCab}/${cabRegistrationNumber}/${Config.driver}/${selectedDriver}`
+        `${Config.apiRequest}://${Config.apiHost}:${Config.apiPort}/${Config.apiCab}/${cabRegistrationNumber}/${Config.driver}/${selectedDriver}`
       )
       .then(() => {
         onCabUpdate();
@@ -33,7 +33,9 @@ const MCabModal = ({
 
   const handleDelete = () => {
     axios
-      .delete(`http://${Config.apiHost}:${Config.apiPort}/${Config.apiCab}/${cabRegistrationNumber}/${Config.driver}`)
+      .delete(
+        `${Config.apiRequest}://${Config.apiHost}:${Config.apiPort}/${Config.apiCab}/${cabRegistrationNumber}/${Config.driver}`
+      )
       .then(() => {
         onDeleteCab();
         onClose();

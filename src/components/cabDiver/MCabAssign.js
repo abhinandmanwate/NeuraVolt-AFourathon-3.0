@@ -10,7 +10,7 @@ const MCabAssign = ({ drivers, onCabUpdate, getAssignedDriver }) => {
   const handleAssign = async () => {
     try {
       await axios.post(
-        `http://${Config.apiHost}:${Config.apiPort}/${Config.apiCab}/${cabRegistrationNumber}/${Config.driver}/${selectedDriver}`
+        `${Config.apiRequest}://${Config.apiHost}:${Config.apiPort}/${Config.apiCab}/${cabRegistrationNumber}/${Config.driver}/${selectedDriver}`
       );
       const assignedDriver = await getAssignedDriver(cabRegistrationNumber);
       onCabUpdate();

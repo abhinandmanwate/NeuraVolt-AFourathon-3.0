@@ -19,7 +19,9 @@ const MDriverModal = ({
 
   const handleUpdate = () => {
     axios
-      .put(`http://${Config.apiHost}:${Config.apiPort}/${Config.apiDriver}/${driverId}/${Config.cab}/${selectedCab}`)
+      .put(
+        `${Config.apiRequest}://${Config.apiHost}:${Config.apiPort}/${Config.apiDriver}/${driverId}/${Config.cab}/${selectedCab}`
+      )
       .then(() => {
         onDriverUpdate();
         onClose();
@@ -31,7 +33,9 @@ const MDriverModal = ({
 
   const handleDelete = () => {
     axios
-      .delete(`http://${Config.apiHost}:${Config.apiPort}/${Config.apiDriver}/${driverId}`)
+      .delete(
+        `${Config.apiRequest}://${Config.apiHost}:${Config.apiPort}/${Config.apiDriver}/${driverId}`
+      )
       .then(() => {
         onDeleteDriver();
         onClose();

@@ -79,7 +79,7 @@ const Dmodal = ({ closeModal, defaultValue }) => {
     console.log(newDriverData);
     try {
       const response = await axios.post(
-        `http://${Config.apiHost}:${Config.apiPort}/${Config.apiDriver}`,
+        `${Config.apiRequest}://${Config.apiHost}:${Config.apiPort}/${Config.apiDriver}`,
         newDriverData
       );
       console.log(response.data);
@@ -91,7 +91,7 @@ const Dmodal = ({ closeModal, defaultValue }) => {
   const updateDriver = async (updatedDriverData) => {
     try {
       const response = await axios.put(
-        `http://${Config.apiHost}:${Config.apiPort}/${Config.apiDriver}`,
+        `${Config.apiRequest}://${Config.apiHost}:${Config.apiPort}/${Config.apiDriver}`,
         updatedDriverData
       );
       console.log(response.data);

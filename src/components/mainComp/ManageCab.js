@@ -24,7 +24,9 @@ const ManageCab = () => {
 
   const getCabs = async () => {
     try {
-      const response = await axios.get(`http://${Config.apiHost}:${Config.apiPort}/${Config.apiCab}`);
+      const response = await axios.get(
+        `${Config.apiRequest}://${Config.apiHost}:${Config.apiPort}/${Config.apiCab}`
+      );
       console.log(response.data);
       setRows(response.data);
     } catch (error) {
@@ -34,7 +36,9 @@ const ManageCab = () => {
 
   const getDrivers = async () => {
     try {
-      const response = await axios.get(`http://${Config.apiHost}:${Config.apiPort}/${Config.apiDriver}`);
+      const response = await axios.get(
+        `${Config.apiRequest}://${Config.apiHost}:${Config.apiPort}/${Config.apiDriver}`
+      );
       console.log(response.data);
       setDrivers(response.data);
     } catch (error) {
@@ -45,7 +49,7 @@ const ManageCab = () => {
   const getAssignedDriver = async (cabRegistrationNumber) => {
     try {
       const response = await axios.get(
-        `http://${Config.apiHost}:${Config.apiPort}/${Config.apiCab}/${cabRegistrationNumber}/${Config.driver}`
+        `${Config.apiRequest}://${Config.apiHost}:${Config.apiPort}/${Config.apiCab}/${cabRegistrationNumber}/${Config.driver}`
       );
       console.log(response.data.driverName);
       return response.data?.driverName || "Not assigned";
