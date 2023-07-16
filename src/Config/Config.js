@@ -1,5 +1,5 @@
 const Config = {
-  apiRequest: "https",
+  apiRequest: "http",
   apiHost: "65.1.211.114",
   // apiHost: "localhost",
   apiPort: "8080",
