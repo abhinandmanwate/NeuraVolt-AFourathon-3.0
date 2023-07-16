@@ -1,0 +1,14 @@
+[[redirects]]
+from = "/"
+to = "/index.html"
+status = 200
+
+[[redirects]]
+from = "/driver"
+to = "/index.html"
+status = 200
+
+[[redirects]]
+from = "/cab"
+to = "/index.html"
+status = 200
