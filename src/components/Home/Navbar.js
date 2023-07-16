@@ -1,14 +1,15 @@
 import React from "react";
 import "../../css/Navbar.css";
 import logo1 from "../../assets/images/transport.png";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <header className="navbar-header">
-      <a href="#" className="logo">
+      <a href="#" className="logo"></a>
+      <Link to="/" className="logo">
         <img src={logo1} alt="" />
-      </a>
+      </Link>
 
       <ul className="navbar">
         <li>
@@ -39,8 +40,12 @@ const Navbar = () => {
       </ul>
 
       <div className="header-btn">
-        <Link to="/driver" className="sign-up">Driver Page</Link>
-        <Link to="/cab" className="sign-up">Cab Page</Link>
+        <Link to="/driver" className="sign-up">
+          Driver Page
+        </Link>
+        <Link to="/cab" className="sign-up">
+          Cab Page
+        </Link>
         {/* <a href="#" className="sign-up">
           Driver Page
         </a>
