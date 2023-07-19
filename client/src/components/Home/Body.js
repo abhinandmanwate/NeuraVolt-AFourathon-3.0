@@ -24,18 +24,22 @@ const Body = () => {
 
       <div className="form-container">
         <form action="">
+          {/* Location input */}
           <div className="input-box">
             <span>Location</span>
             <input type="search" name="" id="" placeholder="Search Place" />
           </div>
+          {/* Pick-Up Date input */}
           <div className="input-box">
             <span>Pick-Up Date</span>
             <input type="date" name="" id="" />
           </div>
+          {/* Return Date input */}
           <div className="input-box">
             <span>Return Date</span>
             <input type="date" name="" id="" />
           </div>
+          {/* Submit button */}
           <input type="submit" name="" id="" className="btn" value="Submit" />
         </form>
       </div>

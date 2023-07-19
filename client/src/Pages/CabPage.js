@@ -1,14 +1,12 @@
-import React from 'react'
-import Navbar from '../components/Home/Navbar'
-import CabCRUD from '../components/mainComp/CabCRUD'
+import React from "react";
+import CabCRUD from "../components/mainComp/CabCRUD";
 
 const CabPage = () => {
   return (
     <div>
-        <Navbar />
-        <CabCRUD />
+      <CabCRUD /> {/* Add your CabCRUD component */}
     </div>
-  )
-}
+  );
+};
 
-export default CabPage
+export default CabPage;

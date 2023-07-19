@@ -4,18 +4,28 @@ import "../../css/CDassign.css";
 import Config from "../../Config/Config";
 
 const MCabAssign = ({ drivers, onCabUpdate, getAssignedDriver }) => {
+  // State variables to track the cab registration number and the selected driver
   const [cabRegistrationNumber, setCabRegistrationNumber] = useState("");
   const [selectedDriver, setSelectedDriver] = useState("");
 
+  // Function to handle the cab assignment
   const handleAssign = async () => {
     try {
+      // Send a POST request to the server to assign the selected driver to the cab
       await axios.post(
         `${Config.apiRequest}://${Config.apiHost}:${Config.apiPort}/${Config.apiCab}/${cabRegistrationNumber}/${Config.driver}/${selectedDriver}`
       );
+
+      // Get the assigned driver for the cab from the server using the provided callback function
       const assignedDriver = await getAssignedDriver(cabRegistrationNumber);
+
+      // Call the provided callback function to update the parent component with the latest cab data
       onCabUpdate();
+
+      // Reset the selected driver and cab registration number fields after successful assignment
       setSelectedDriver("");
       setCabRegistrationNumber("");
+
       console.log("Assigned Driver:", assignedDriver);
     } catch (error) {
       console.error(error);

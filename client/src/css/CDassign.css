@@ -10,14 +10,7 @@
     padding: 1rem;
     box-shadow: 0px 10px 10px #ccc;
     border-radius: 10px;
-    /* padding: 20px; */
   }
-  
-  /* .MCabAssign .heading {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
-  } */
   
   .MCabAssign label {
     display: flex;
@@ -50,23 +43,9 @@
 
   .head2{
     text-align: center;
-    /* margin-top: 2rem; */
     margin-bottom: 2rem;
 }
 
 .head2 h1 {
     font-size: 2rem;
 }
-  
-  /* .MCabAssign button {
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .MCabAssign button:hover {
-    background-color: #45a049;
-  } */

@@ -1,14 +1,12 @@
-import React from 'react'
-import DriverCRUD from '../components/mainComp/DriverCRUD'
-import Navbar from '../components/Home/Navbar'
+import React from "react";
+import DriverCRUD from "../components/mainComp/DriverCRUD";
 
 const DriverPage = () => {
   return (
     <div>
-        <Navbar />
-        <DriverCRUD />
+      <DriverCRUD /> {/* Add your DriverCRUD component */}
     </div>
-  )
-}
+  );
+};
 
-export default DriverPage
+export default DriverPage;

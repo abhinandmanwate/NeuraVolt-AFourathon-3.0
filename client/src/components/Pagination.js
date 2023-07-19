@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Pagination from "@mui/material/Pagination";
 
+// Define styles using makeStyles
 const useStyles = makeStyles((theme) => ({
   pagination: {
     display: "flex",
@@ -26,10 +27,10 @@ const CustomPagination = ({
   return (
     <div className={classes.pagination}>
       <Pagination
-        count={totalPages}
-        page={currentPage}
-        onChange={handlePageChange}
-        color="primary"
+        count={totalPages} // Total number of pages
+        page={currentPage} // Current active page
+        onChange={handlePageChange} // Callback function for page change
+        color="primary" // Color of pagination
       />
     </div>
   );

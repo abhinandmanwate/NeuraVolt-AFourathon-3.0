@@ -22,6 +22,7 @@ const ManageCab = () => {
     fetchAssignedDrivers();
   }, [rows]);
 
+  // Fetch cabs from the API
   const getCabs = async () => {
     try {
       const response = await axios.get(
@@ -34,6 +35,7 @@ const ManageCab = () => {
     }
   };
 
+  // Fetch drivers from the API
   const getDrivers = async () => {
     try {
       const response = await axios.get(
@@ -46,6 +48,7 @@ const ManageCab = () => {
     }
   };
 
+  // Get the assigned driver for a cab
   const getAssignedDriver = async (cabRegistrationNumber) => {
     try {
       const response = await axios.get(
@@ -63,6 +66,7 @@ const ManageCab = () => {
     }
   };
 
+  // Fetch assigned drivers for all cabs
   const fetchAssignedDrivers = async () => {
     const driversData = {};
     for (const row of rows) {
@@ -72,15 +76,18 @@ const ManageCab = () => {
     setAssignedDrivers(driversData);
   };
 
+  // Handle edit button click for a cab
   const handleEditClick = (cabRegistrationNumber) => {
     setSelectedCab(cabRegistrationNumber);
     setModalOpen(true);
   };
 
+  // Handle cab update
   const handleCabUpdate = () => {
     getCabs();
   };
 
+  // Handle cab delete
   const handleCabDelete = () => {
     fetchAssignedDrivers();
     getCabs();

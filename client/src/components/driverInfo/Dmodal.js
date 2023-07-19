@@ -4,6 +4,7 @@ import "../../css/Dmodal.css";
 import Config from "../../Config/Config";
 
 const Dmodal = ({ closeModal, defaultValue }) => {
+  // State to manage the form fields
   const [formState, setFormState] = useState({
     driverIdNumber: "",
     driverName: "",
@@ -11,10 +12,16 @@ const Dmodal = ({ closeModal, defaultValue }) => {
     driverPhoneNumber: "",
   });
 
+  // State to manage form validation errors
   const [errors, setErrors] = useState("");
-  const [editedFields, setEditedFields] = useState([]);
-  const [isUpdate, setIsUpdate] = useState(false); // Track whether it's an update or create operation
 
+  // State to track which fields have been edited
+  const [editedFields, setEditedFields] = useState([]);
+
+  // State to track whether the modal is for updating an existing driver or creating a new one
+  const [isUpdate, setIsUpdate] = useState(false);
+
+  // Function to validate the form fields
   const validateForm = () => {
     // Validation logic here
     if (
@@ -37,6 +44,7 @@ const Dmodal = ({ closeModal, defaultValue }) => {
     }
   };
 
+  // Initialize form fields with default values when the modal is for editing
   useEffect(() => {
     if (defaultValue) {
       setFormState(defaultValue);
@@ -44,6 +52,7 @@ const Dmodal = ({ closeModal, defaultValue }) => {
     }
   }, [defaultValue]);
 
+  // Function to handle input changes in the form
   const handleChange = (e) => {
     const fieldName = e.target.name;
     const fieldValue = e.target.value;
@@ -53,6 +62,7 @@ const Dmodal = ({ closeModal, defaultValue }) => {
       [fieldName]: fieldValue,
     });
 
+    // Track the edited fields for validation
     if (!editedFields.includes(fieldName)) {
       setEditedFields([...editedFields, fieldName]);
     } else {
@@ -60,6 +70,7 @@ const Dmodal = ({ closeModal, defaultValue }) => {
     }
   };
 
+  // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -75,6 +86,7 @@ const Dmodal = ({ closeModal, defaultValue }) => {
     }
   };
 
+  // Function to create a new driver
   const createDriver = async (newDriverData) => {
     console.log(newDriverData);
     try {
@@ -88,6 +100,8 @@ const Dmodal = ({ closeModal, defaultValue }) => {
       console.error(error);
     }
   };
+
+  // Function to update an existing driver
   const updateDriver = async (updatedDriverData) => {
     try {
       const response = await axios.put(
@@ -148,6 +162,7 @@ const Dmodal = ({ closeModal, defaultValue }) => {
             />
           </div>
 
+          {/* Display validation errors if any */}
           {errors && <div className="error">{`Please include: ${errors}`}</div>}
 
           <div className="dform-btn">
