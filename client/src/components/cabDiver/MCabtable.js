@@ -7,8 +7,13 @@ import CustomPagination from "../Pagination";
 import Config from "../../Config/Config";
 
 const MCabTable = ({ rows, onEditClick, getAssignedDriver, onCabUpdate }) => {
+  // State to track assigned drivers for each cab
   const [assignedDrivers, setAssignedDrivers] = useState({});
+
+  // Ref to the modal container
   const modalRef = useRef(null);
+
+  // State to manage pagination
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3;
 
@@ -22,10 +27,12 @@ const MCabTable = ({ rows, onEditClick, getAssignedDriver, onCabUpdate }) => {
     setCurrentPage(pageNumber);
   };
 
+  // useEffect hook to fetch assigned drivers whenever the rows change
   useEffect(() => {
     fetchAssignedDrivers();
   }, [rows]);
 
+  // Function to fetch assigned drivers for each cab
   const fetchAssignedDrivers = async () => {
     const driversData = {};
     for (const row of rows) {
@@ -35,14 +42,17 @@ const MCabTable = ({ rows, onEditClick, getAssignedDriver, onCabUpdate }) => {
     setAssignedDrivers(driversData);
   };
 
+  // Handle edit button click
   const handleEditClick = (cabRegistrationNumber) => {
     onEditClick(cabRegistrationNumber);
   };
 
+  // Handle cab update
   const handleCabUpdate = () => {
     onCabUpdate();
   };
 
+  // Handle cab delete
   const handleCabDelete = (cabRegistrationNumber) => {
     axios
       .delete(
@@ -57,9 +67,10 @@ const MCabTable = ({ rows, onEditClick, getAssignedDriver, onCabUpdate }) => {
       });
   };
 
+  // Handle click outside the modal to close it
   const handleModalClick = (e) => {
     if (modalRef.current && !modalRef.current.contains(e.target)) {
-      onEditClick(null); // Close the modal when clicking outside
+      onEditClick(null);
     }
   };
 

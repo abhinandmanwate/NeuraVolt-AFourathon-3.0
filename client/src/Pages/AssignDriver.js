@@ -1,14 +1,12 @@
-import React from 'react'
-import Navbar from '../components/Home/Navbar'
-import ManageCab from '../components/mainComp/ManageCab'
+import React from "react";
+import ManageCab from "../components/mainComp/ManageCab";
 
 const AssignDriver = () => {
   return (
     <div>
-        <Navbar />
-        <ManageCab />
+      <ManageCab /> {/* Add your ManageCab component */}
     </div>
-  )
-}
+  );
+};
 
-export default AssignDriver
+export default AssignDriver;

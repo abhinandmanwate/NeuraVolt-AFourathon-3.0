@@ -21,14 +21,17 @@ const MDriverTable = ({ rows, onEditClick, assignedCabs, onDriverUpdate }) => {
     setCurrentPage(pageNumber);
   };
 
+  // Function to handle edit button click
   const handleEditClick = (driverId) => {
     onEditClick(driverId);
   };
 
+  // Function to trigger driver update
   const handleDriverUpdate = () => {
     onDriverUpdate();
   };
 
+  // Function to handle driver deletion
   const handleDriverDelete = (driverId) => {
     axios
       .delete(
@@ -42,6 +45,7 @@ const MDriverTable = ({ rows, onEditClick, assignedCabs, onDriverUpdate }) => {
       });
   };
 
+  // Function to handle modal click
   const handleModalClick = (e) => {
     if (modalRef.current && !modalRef.current.contains(e.target)) {
       onEditClick(null); // Close the modal when clicking outside

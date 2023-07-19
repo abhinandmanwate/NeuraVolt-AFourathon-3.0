@@ -14,40 +14,43 @@ const MDriverModal = ({
   const modalRef = useRef(null);
 
   useEffect(() => {
-    setSelectedCab("");
+    setSelectedCab(""); // Reset selectedCab when the modal is opened or closed
   }, [driverId]);
 
+  // Function to handle the update of the driver's assigned cab
   const handleUpdate = () => {
     axios
       .put(
         `${Config.apiRequest}://${Config.apiHost}:${Config.apiPort}/${Config.apiDriver}/${driverId}/${Config.cab}/${selectedCab}`
       )
       .then(() => {
-        onDriverUpdate();
-        onClose();
+        onDriverUpdate(); // Call the onDriverUpdate callback to refresh the driver table
+        onClose(); // Close the modal after the update is successful
       })
       .catch((error) => {
         console.error("Error updating driver:", error);
       });
   };
 
+  // Function to handle the deletion of the driver
   const handleDelete = () => {
     axios
       .delete(
         `${Config.apiRequest}://${Config.apiHost}:${Config.apiPort}/${Config.apiDriver}/${driverId}`
       )
       .then(() => {
-        onDeleteDriver();
-        onClose();
+        onDeleteDriver(); // Call the onDeleteDriver callback to refresh the driver table
+        onClose(); // Close the modal after the deletion is successful
       })
       .catch((error) => {
         console.error("Error deleting driver:", error);
       });
   };
 
+  // Function to handle modal click and close the modal when clicking outside
   const handleModalClick = (e) => {
     if (modalRef.current && !modalRef.current.contains(e.target)) {
-      onClose(); // Close the modal when clicking outside
+      onClose();
     }
   };
 

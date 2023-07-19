@@ -7,11 +7,14 @@ import { Link } from "react-router-dom";
 
 function CabCRUD() {
   const [modalOpen, setModalOpen] = useState(false);
-
   const [rows, setRows] = useState([]);
-
   const [rowToEdit, setRowToEdit] = useState(null);
 
+  useEffect(() => {
+    getCabs();
+  }, []);
+
+  // Fetch cab data from the API
   const getCabs = async () => {
     try {
       const response = await axios.get(
@@ -24,10 +27,7 @@ function CabCRUD() {
     }
   };
 
-  useEffect(() => {
-    getCabs();
-  }, []);
-
+  // Delete a cab
   const deleteCab = async (deleteCabRegistrationNumber) => {
     console.log("Entered delete " + deleteCabRegistrationNumber);
     try {
@@ -37,14 +37,14 @@ function CabCRUD() {
       console.log(response.data);
       // Perform any additional actions or update UI as needed
 
-      // getCabs() to reload the table
+      // Refresh cab data
       getCabs();
     } catch (error) {
       console.error(error);
     }
   };
 
-  // Edit the field
+  // Edit a cab
   const handleEditRow = (idx) => {
     setRowToEdit(idx);
     console.log(rowToEdit);
@@ -52,7 +52,7 @@ function CabCRUD() {
     setModalOpen(true);
   };
 
-  // Add new row
+  // Handle form submission
   const handleSubmit = (newRow) => {
     rowToEdit === null
       ? setRows([...rows, newRow])
@@ -80,10 +80,6 @@ function CabCRUD() {
         <Link to="/assign-driver" className="btn" id="Assign">
           Assign
         </Link>
-
-        {/* <button className="btn" id="Assign">
-          Assign
-        </button> */}
       </div>
       {modalOpen && (
         <Cmodal

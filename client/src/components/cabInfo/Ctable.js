@@ -17,6 +17,7 @@ const Ctable = ({ rows, deleteRow, editRow }) => {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
   return (
     <div className="table-wrapper">
       <table className="table">
@@ -35,18 +36,25 @@ const Ctable = ({ rows, deleteRow, editRow }) => {
             const rowIndex = indexOfFirstItem + idx;
             return (
               <tr key={rowIndex}>
+                {/* Display the serial number for each row */}
                 <td data-title="Sr No.">{rowIndex + 1}</td>
+                {/* Display the cab registration number */}
                 <td data-title="Cab Registration Number" className="expand">
                   {row.cabRegistrationNumber}
                 </td>
+                {/* Display the cab model */}
                 <td data-title="Cab Model">{row.cabModel}</td>
+                {/* Display the cab color */}
                 <td data-title="Cab Color">{row.cabColour}</td>
                 <td>
+                  {/* Action buttons */}
                   <span className="actions">
+                    {/* Edit button with onClick event */}
                     <EditIcon
                       className="edit-btn"
                       onClick={() => editRow(rowIndex)}
                     />
+                    {/* Delete button with onClick event */}
                     <DeleteIcon
                       className="delete-btn"
                       onClick={() => deleteRow(row.cabRegistrationNumber)}
@@ -59,6 +67,7 @@ const Ctable = ({ rows, deleteRow, editRow }) => {
         </tbody>
       </table>
       {/* Pagination */}
+      {/* CustomPagination component for handling pagination */}
       <CustomPagination
         totalItems={rows.length}
         itemsPerPage={itemsPerPage}

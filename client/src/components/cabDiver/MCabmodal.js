@@ -4,47 +4,54 @@ import "../../css/Dmodal.css";
 import Config from "../../Config/Config";
 
 const MCabModal = ({
-  cabRegistrationNumber,
-  drivers,
-  onClose,
-  onCabUpdate,
-  onDeleteCab,
+  cabRegistrationNumber, // The cab registration number to be edited
+  drivers, // An array of drivers to be displayed in the driver selection dropdown
+  onClose, // Callback function to close the modal
+  onCabUpdate, // Callback function to update the cab details
+  onDeleteCab, // Callback function to delete the cab
 }) => {
+  // State to track the selected driver for the cab
   const [selectedDriver, setSelectedDriver] = useState("");
+
+  // Ref to the modal container
   const modalRef = useRef(null);
 
+  // Reset selectedDriver when cabRegistrationNumber changes
   useEffect(() => {
     setSelectedDriver("");
   }, [cabRegistrationNumber]);
 
+  // Handle cab update
   const handleUpdate = () => {
     axios
       .put(
         `${Config.apiRequest}://${Config.apiHost}:${Config.apiPort}/${Config.apiCab}/${cabRegistrationNumber}/${Config.driver}/${selectedDriver}`
       )
       .then(() => {
-        onCabUpdate();
-        onClose();
+        onCabUpdate(); // Call the provided callback to update the parent component
+        onClose(); // Close the modal after successful update
       })
       .catch((error) => {
         console.error("Error updating cab:", error);
       });
   };
 
+  // Handle cab delete
   const handleDelete = () => {
     axios
       .delete(
         `${Config.apiRequest}://${Config.apiHost}:${Config.apiPort}/${Config.apiCab}/${cabRegistrationNumber}/${Config.driver}`
       )
       .then(() => {
-        onDeleteCab();
-        onClose();
+        onDeleteCab(); // Call the provided callback to update the parent component
+        onClose(); // Close the modal after successful delete
       })
       .catch((error) => {
         console.error("Error deleting cab:", error);
       });
   };
 
+  // Handle click outside the modal to close it
   const handleModalClick = (e) => {
     if (modalRef.current && !modalRef.current.contains(e.target)) {
       onClose(); // Close the modal when clicking outside

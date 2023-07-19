@@ -7,11 +7,14 @@ import { Link } from "react-router-dom";
 
 function DriverCRUD() {
   const [modalOpen, setModalOpen] = useState(false);
-
   const [rows, setRows] = useState([]);
-
   const [rowToEdit, setRowToEdit] = useState(null);
 
+  useEffect(() => {
+    getDriver();
+  }, []);
+
+  // Fetch driver data from the API
   const getDriver = async () => {
     try {
       const response = await axios.get(
@@ -24,10 +27,7 @@ function DriverCRUD() {
     }
   };
 
-  useEffect(() => {
-    getDriver();
-  }, []);
-
+  // Delete a driver
   const deleteDriver = async (deleteDriverIdNumber) => {
     console.log("Entered delete " + deleteDriverIdNumber);
     try {
@@ -37,14 +37,14 @@ function DriverCRUD() {
       console.log(response.data);
       // Perform any additional actions or update UI as needed
 
-      // getCabs() to reload the table
+      // Refresh driver data
       getDriver();
     } catch (error) {
       console.error(error);
     }
   };
 
-  // Edit the field
+  // Edit a driver
   const handleEditRow = (idx) => {
     setRowToEdit(idx);
     console.log(rowToEdit);
@@ -52,7 +52,7 @@ function DriverCRUD() {
     setModalOpen(true);
   };
 
-  // Add new row
+  // Handle form submission
   const handleSubmit = (newRow) => {
     rowToEdit === null
       ? setRows([...rows, newRow])

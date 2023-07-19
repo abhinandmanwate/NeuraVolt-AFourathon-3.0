@@ -11,6 +11,7 @@ const Navbar = () => {
         <img src={logo1} alt="" />
       </Link>
 
+      {/* Navigation menu */}
       <ul className="navbar">
         <li>
           <a className="anchor" href="#home">
@@ -39,6 +40,7 @@ const Navbar = () => {
         </li>
       </ul>
 
+      {/* Header buttons */}
       <div className="header-btn">
         <Link to="/driver" className="sign-up">
           Driver Page
@@ -46,12 +48,6 @@ const Navbar = () => {
         <Link to="/cab" className="sign-up">
           Cab Page
         </Link>
-        {/* <a href="#" className="sign-up">
-          Driver Page
-        </a>
-        <a href="#" className="sign-in">
-          Cab Page
-        </a> */}
       </div>
     </header>
   );

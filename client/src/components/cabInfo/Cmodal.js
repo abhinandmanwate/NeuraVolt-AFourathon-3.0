@@ -3,7 +3,8 @@ import axios from "axios";
 import "../../css/Dmodal.css";
 import Config from "../../Config/Config";
 
-const Dmodal = ({ closeModal, defaultValue }) => {
+const Cmodal = ({ closeModal, defaultValue }) => {
+  // State variables to manage form data and errors
   const [formState, setFormState] = useState({
     cabRegistrationNumber: "",
     cabModel: "",
@@ -14,8 +15,8 @@ const Dmodal = ({ closeModal, defaultValue }) => {
   const [editedFields, setEditedFields] = useState([]);
   const [isUpdate, setIsUpdate] = useState(false); // Track whether it's an update or create operation
 
+  // Validation logic for the form
   const validateForm = () => {
-    // Validation logic here
     if (
       formState.cabRegistrationNumber &&
       formState.cabModel &&
@@ -35,6 +36,7 @@ const Dmodal = ({ closeModal, defaultValue }) => {
     }
   };
 
+  // useEffect hook to set formState and isUpdate based on defaultValue
   useEffect(() => {
     if (defaultValue) {
       setFormState(defaultValue);
@@ -42,6 +44,7 @@ const Dmodal = ({ closeModal, defaultValue }) => {
     }
   }, [defaultValue]);
 
+  // Handle form field changes
   const handleChange = (e) => {
     const fieldName = e.target.name;
     const fieldValue = e.target.value;
@@ -51,6 +54,7 @@ const Dmodal = ({ closeModal, defaultValue }) => {
       [fieldName]: fieldValue,
     });
 
+    // Keep track of edited fields
     if (!editedFields.includes(fieldName)) {
       setEditedFields([...editedFields, fieldName]);
     } else {
@@ -58,6 +62,7 @@ const Dmodal = ({ closeModal, defaultValue }) => {
     }
   };
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -73,6 +78,7 @@ const Dmodal = ({ closeModal, defaultValue }) => {
     }
   };
 
+  // Function to create a new cab
   const createCab = async (newCabData) => {
     console.log(newCabData);
     try {
@@ -86,6 +92,8 @@ const Dmodal = ({ closeModal, defaultValue }) => {
       console.error(error);
     }
   };
+
+  // Function to update an existing cab
   const updateCab = async (updatedCabData) => {
     try {
       const response = await axios.put(
@@ -152,4 +160,4 @@ const Dmodal = ({ closeModal, defaultValue }) => {
   );
 };
 
-export default Dmodal;
+export default Cmodal;
