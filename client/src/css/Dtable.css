@@ -1,76 +1,122 @@
 /* css for table  */
 .table-wrapper {
-    width: 100%;
-  }  
-  
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}  
+
+.table {
+  display: block;
+  overflow: hidden;
+  table-layout: fixed;
+  border-collapse: collapse;
+  box-shadow: 0px 10px 10px #ccc;
+  border-radius: 10px;
+  white-space: nowrap;
+  width: fit-content;
+  max-width: 100%;
+  margin: auto;
+  table-layout: auto;
+  overflow-x: auto;
+  text-align: center;
+  height: fit-content;
+}
+
+.table thead {
+  background-color: #c1d8f0;
+  color: #222;
+}
+
+.table th,
+.table td {
+  padding: 0.8rem;
+}
+
+.table tbody tr:nth-child(even){
+  background-color: #e1f1fd;
+  color: #222;
+}
+
+.table td {
+  border-top: 0.5px solid #ddd;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table tbody tr:hover {
+  background-color: #eee;
+}
+
+.expand {
+  width: 100%;
+}
+
+.label {
+  border-radius: 3px;
+  padding: 0.3rem;
+  color: white;
+}
+
+
+/* css for button  */
+.actions {
+  display: flex;
+  justify-content: space-around;
+}
+
+.actions svg {
+  cursor: pointer;
+}
+
+.delete-btn {
+  color: #e10d05;
+  margin-left: 1rem;
+}
+
+/* CSS for mobile view */
+@media only screen and (max-width: 720px){
+
   .table {
+    height: 470px;
+    overflow-y: scroll;
+  }
+      
+  .table thead{
+    display: none;
+  }
+
+  .table, .table tbody, .table tr, .table td{
     display: block;
-    overflow: hidden;
-    table-layout: fixed;
-    border-collapse: collapse;
-    box-shadow: 0px 10px 10px #ccc;
-    border-radius: 10px;
-    white-space: nowrap;
-    width: fit-content;
-    max-width: 80%;
-    margin: auto;
-    table-layout: auto;
-    overflow-x: auto;
-    text-align: center;
-    height: fit-content;
-  }
-  
-  .table thead {
-    background-color: #ccc;
-    color: #222;
-  }
-  
-  .table th,
-  .table td {
-    padding: 0.8rem;
-  }
-
-  .table tbody tr:nth-child(even){
-    background-color: #ccc;
-    color: #222;
-  }
-  
-  .table td {
-    border-top: 0.5px solid #ddd;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .table tbody tr:hover {
-    background-color: #eee;
-  }
-
-  .expand {
     width: 100%;
   }
+  .table tr{
+    margin-bottom: 1rem;   
+  }
 
-  .label {
-    border-radius: 3px;
-    padding: 0.3rem;
-    color: white;
+  .table td{
+    text-align: right;
+    padding-left: 50%;
+    text-align: right;
+    position: relative;
   }
-  
 
-  /* css for button  */
-  .actions {
-    display: flex;
-    justify-content: space-around;
+  .table td::before{
+    content: attr(data-title);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: left;
   }
-  
-  .actions svg {
-    cursor: pointer;
-  }
-  
+
   .delete-btn {
-    color: #e10d05;
-    margin-left: 1rem;
+    margin-left: -2rem;
+    margin-right: -1rem;
   }
 
+<<<<<<< HEAD
   /* CSS for mobile view */
   @media only screen and (max-width: 720px){
 
@@ -128,3 +174,19 @@
       margin-bottom: 0;
     }
   }
+=======
+  .table tbody tr:nth-child(even){
+    background-color: 	#e1f1fd;
+    color: #222;
+  }
+
+  .table tbody tr:nth-child(odd){
+    background-color: #e0e0e0;
+    color: #111;
+  }
+
+  .table tbody tr:last-child{
+    margin-bottom: 0;
+  }
+}
+>>>>>>> latest-code/main

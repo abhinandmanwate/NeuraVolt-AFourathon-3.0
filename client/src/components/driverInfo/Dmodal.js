@@ -1,10 +1,9 @@
+// Dmodal.js
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "../../css/Dmodal.css";
-import Config from "../../Config/Config";
+import { updateDriver, createDriver } from "../../Config/DriverAPI"; // Import the API functions from api.js
 
-const Dmodal = ({ closeModal, defaultValue }) => {
-  // State to manage the form fields
+const Dmodal = ({ closeModal, onSubmit, defaultValue }) => {
   const [formState, setFormState] = useState({
     driverIdNumber: "",
     driverName: "",
@@ -17,13 +16,20 @@ const Dmodal = ({ closeModal, defaultValue }) => {
 
   // State to track which fields have been edited
   const [editedFields, setEditedFields] = useState([]);
+  const [isUpdate, setIsUpdate] = useState(false);
+
+  useEffect(() => {
+    if (defaultValue) {
+      setFormState(defaultValue);
+      setIsUpdate(true);
+    }
+  }, [defaultValue]);
 
   // State to track whether the modal is for updating an existing driver or creating a new one
   const [isUpdate, setIsUpdate] = useState(false);
 
   // Function to validate the form fields
   const validateForm = () => {
-    // Validation logic here
     if (
       formState.driverIdNumber &&
       formState.driverName &&
@@ -44,15 +50,6 @@ const Dmodal = ({ closeModal, defaultValue }) => {
     }
   };
 
-  // Initialize form fields with default values when the modal is for editing
-  useEffect(() => {
-    if (defaultValue) {
-      setFormState(defaultValue);
-      setIsUpdate(true); // Set isUpdate to true if defaultValue is provided
-    }
-  }, [defaultValue]);
-
-  // Function to handle input changes in the form
   const handleChange = (e) => {
     const fieldName = e.target.name;
     const fieldValue = e.target.value;
@@ -70,49 +67,12 @@ const Dmodal = ({ closeModal, defaultValue }) => {
     }
   };
 
-  // Function to handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!validateForm()) return;
 
-    console.log(formState);
-    if (isUpdate) {
-      // Handle the update operation
-      updateDriver(formState);
-    } else {
-      // Handle the create operation
-      createDriver(formState);
-    }
-  };
-
-  // Function to create a new driver
-  const createDriver = async (newDriverData) => {
-    console.log(newDriverData);
-    try {
-      const response = await axios.post(
-        `${Config.apiRequest}://${Config.apiHost}:${Config.apiPort}/${Config.apiDriver}`,
-        newDriverData
-      );
-      console.log(response.data);
-      closeModal();
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  // Function to update an existing driver
-  const updateDriver = async (updatedDriverData) => {
-    try {
-      const response = await axios.put(
-        `${Config.apiRequest}://${Config.apiHost}:${Config.apiPort}/${Config.apiDriver}`,
-        updatedDriverData
-      );
-      console.log(response.data);
-      closeModal();
-    } catch (error) {
-      console.error(error);
-    }
+    onSubmit(formState); // Call the onSubmit function passed from DriverCRUD.js
   };
 
   return (
@@ -123,9 +83,8 @@ const Dmodal = ({ closeModal, defaultValue }) => {
       }}
     >
       <div className="modal">
-        <form>
+        <form onSubmit={handleSubmit}>
           <h3>Enter Driver details</h3>
-          {/* Form fields */}
           <div className="form-group">
             <label htmlFor="driverIdNumber">Driver Id Number</label>
             <input
@@ -136,7 +95,7 @@ const Dmodal = ({ closeModal, defaultValue }) => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="driverName">driverName</label>
+            <label htmlFor="driverName">Driver Name</label>
             <input
               name="driverName"
               value={formState.driverName}
@@ -145,7 +104,7 @@ const Dmodal = ({ closeModal, defaultValue }) => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="driverEmail">driverEmail</label>
+            <label htmlFor="driverEmail">Driver Email</label>
             <input
               name="driverEmail"
               value={formState.driverEmail}
@@ -154,7 +113,7 @@ const Dmodal = ({ closeModal, defaultValue }) => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="driverPhoneNumber">driverPhoneNumber</label>
+            <label htmlFor="driverPhoneNumber">Driver Phone Number</label>
             <input
               name="driverPhoneNumber"
               value={formState.driverPhoneNumber}
@@ -166,7 +125,7 @@ const Dmodal = ({ closeModal, defaultValue }) => {
           {errors && <div className="error">{`Please include: ${errors}`}</div>}
 
           <div className="dform-btn">
-            <button className="btn" type="submit" onClick={handleSubmit}>
+            <button className="btn" type="submit">
               {isUpdate ? "Edit" : "Submit"}
             </button>
           </div>

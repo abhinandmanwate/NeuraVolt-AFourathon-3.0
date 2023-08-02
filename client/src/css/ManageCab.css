@@ -4,13 +4,32 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #faf9f6;
+  background-image: url("../assets/images/bg13.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* background-color: #faf9f6; */
+}
+
+.ManageCab .form{
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* height: 100vh; */
+  height: fit-content;
+  background-color: rgba(255, 255, 255, 0.9);
+  /* background-color: #faf9f6; */
+  padding-bottom: 1rem;
+  border: 1px solid #444;
 }
 
 .gridMCab {
   display: grid;
-  grid-template-columns: 0.7fr 2.3fr; /* Adjust the column widths as needed */
-  grid-gap: 1rem; /* Adjust the gap between the columns as needed */
+  grid-template-columns: 0.7fr 2.3fr;
+  grid-gap: 1rem; 
 }
 
 .btn {
@@ -29,7 +48,7 @@
 
 .heading{
   text-align: center;
-  margin-top: 5rem;
+  margin-top: 2rem;
   margin-bottom: 2rem;
 }
 

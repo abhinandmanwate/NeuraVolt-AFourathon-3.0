@@ -1,92 +1,92 @@
 .modal-container {
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .modal {
-    border-radius: 5px;
-    padding: 2rem;
-    background-color: white;
-    width: 25em;
-  }
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .modal h3{
-    margin-bottom: 1rem;
-  }
-  
-  .modal .btn {
-    display: block;
-    margin: auto;
-  }
+.modal {
+  border-radius: 5px;
+  padding: 2rem;
+  background-color: #e1f1fd;
+  width: 25em;
+}
 
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1rem;
-  }
-  
-  .form-group input,
-  .form-group textarea,
-  .form-group select {
-    border: 1px solid black;
-    border-radius: 0.3rem;
-    padding: 0.3rem;
-    font-size: 1rem;
-  }
-  
-  .form-group label {
-    margin-bottom: 0.2rem;
-  }
+.modal h3{
+  margin-bottom: 1rem;
+}
 
-  .dform-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.modal .btn {
+  display: block;
+  margin: auto;
+}
 
-  .dform-btn #btn-1{
-    background-color: #00B200;
-  }
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
 
-  .error {
-    background-color: #f8d7da;
-    color: #df4759;
-    padding: 0.5rem;
-    border-radius: 0.3rem;
-    margin-bottom: 1rem;
-  }
+.form-group input,
+.form-group textarea,
+.form-group select {
+  border: 1px solid black;
+  border-radius: 0.3rem;
+  padding: 0.3rem;
+  font-size: 1rem;
+}
 
-  .hide {
-    display: none;
-  }
+.form-group label {
+  margin-bottom: 0.2rem;
+}
 
-  /* Assign cab css */
-  .modal-assign {
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.dform-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .modal-assign .selectDriver{
-    margin-right: 1rem;
-  } 
-  
-  .modal-assign .driverList{
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-  }
+.dform-btn #btn-1{
+  background-color: #00B200;
+}
+
+.error {
+  background-color: #f8d7da;
+  color: #df4759;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+.hide {
+  display: none;
+}
+
+/* Assign cab css */
+.modal-assign {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-assign .selectDriver{
+  margin-right: 1rem;
+} 
+
+.modal-assign .driverList{
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}

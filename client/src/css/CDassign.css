@@ -1,51 +1,51 @@
 .MCabAssign {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #ccc;
-    color: #222;
-    width: fit-content;
-    margin-left: 8rem;
-    padding: 1rem;
-    box-shadow: 0px 10px 10px #ccc;
-    border-radius: 10px;
-  }
-  
-  .MCabAssign label {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-  }
-  
-  .MCabAssign input,
-  .MCabAssign select {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 190px;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #c1d8f0;
+  color: #222;
+  width: fit-content;
+  margin-left: 3rem;
+  padding: 1rem;
+  /* box-shadow: 0px 10px 10px #ccc; */
+  border-radius: 10px;
+}
 
-  .btn {
-    margin-top: 1rem;
-    border: none;
-    background-color: #1d4ed8;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border-radius: 10px;
-    cursor: pointer;
-    box-shadow: 0px 5px 5px #ccc;
-  }
+.MCabAssign label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
 
-  .MCabAssign button:hover {
-    background-color: blue;
-  }
+.MCabAssign input,
+.MCabAssign select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 190px;
+}
 
-  .head2{
-    text-align: center;
-    margin-bottom: 2rem;
+.btn {
+  margin-top: 1rem;
+  border: none;
+  background-color: #1d4ed8;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0px 5px 5px #ccc;
+}
+
+.MCabAssign button:hover {
+  background-color: blue;
+}
+
+.head2{
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .head2 h1 {
-    font-size: 2rem;
+  font-size: 2rem;
 }

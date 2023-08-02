@@ -1,0 +1,95 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Build Test Push
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+          cache: maven
+
+      - name: Build with Maven
+        run: |
+          cd ./server/cabmanagement
+          mvn clean install
+
+      - name: Upload JAR artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: cabmanagement-0.0.1-SNAPSHOT
+          path: ./server/cabmanagement/target/cabmanagement-0.0.1-SNAPSHOT.jar
+
+  test:
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+          cache: maven
+
+      - name: Download JAR artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: cabmanagement-0.0.1-SNAPSHOT
+          path: ./server/cabmanagement/target/
+
+      - name: Run Tests with Maven
+        run: |
+          cd ./server/cabmanagement  # Change to the cabmanagement directory, where pom.xml exists
+          mvn test
+
+  build-push-image-to-docker-hub:
+    needs: test
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "adopt"
+          cache: maven
+
+      - name: Download JAR artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: cabmanagement-0.0.1-SNAPSHOT
+          path: ./server/cabmanagement/target/
+
+      - name: Build Docker image and push to Docker Hub
+        uses: mr-smithers-excellent/docker-build-push@v6
+        with:
+          image: notprasanna/versavolt
+          tags: cab-image-latest
+          registry: docker.io
+          directory: ./server/cabmanagement
+          dockerfile: ./server/cabmanagement/Dockerfile
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}

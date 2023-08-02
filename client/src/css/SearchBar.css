@@ -1,0 +1,37 @@
+/* Styling the container div */
+.search-bar {
+    width: 300px;
+    margin: 0 auto;
+  }
+  
+  /* Styling the input field */
+  .search-bar .MuiOutlinedInput-root {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+  }
+  
+  /* Styling the search icon */
+  .search-bar .MuiSvgIcon-root {
+    fill: #999;
+  }
+  
+  /* Styling the label */
+  .search-bar .MuiInputLabel-root {
+    color: #666;
+  }
+  
+  /* Styling the label when the input is focused */
+  .search-bar .MuiInputLabel-root.Mui-focused {
+    color: #333;
+  }
+  
+  /* Styling the border when the input is focused */
+  .search-bar .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #333;
+  }
+  
+  /* Styling the border when the input is hovered */
+  .search-bar .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: #555;
+  }
+  

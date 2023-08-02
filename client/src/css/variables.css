@@ -1,7 +1,8 @@
 export const variables = {
-    mainColor: "#fe5b3d",
-    secondColor: "#ffac38",
-    textColor: "#444",
-    gradient: "linear-gradient(#fe5b3d, #ffac38)",
-  };
-  
+  mainColor: "#fe5b3d",
+  secondColor: "#ffac38",
+  textColor: "#444"
+  table-head: "#c1d8f0"
+  table-row: "#e1f1fd"
+  gradient: "linear-gradient(#fe5b3d, #ffac38)",
+};

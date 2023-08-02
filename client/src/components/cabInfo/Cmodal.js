@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "../../css/Dmodal.css";
-import Config from "../../Config/Config";
 
-const Cmodal = ({ closeModal, defaultValue }) => {
+const Cmodal = ({ closeModal, onSubmit, defaultValue }) => {
   // State variables to manage form data and errors
   const [formState, setFormState] = useState({
     cabRegistrationNumber: "",
@@ -62,49 +60,12 @@ const Cmodal = ({ closeModal, defaultValue }) => {
     }
   };
 
-  // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!validateForm()) return;
 
-    console.log(formState);
-    if (isUpdate) {
-      // Handle the update operation
-      updateCab(formState);
-    } else {
-      // Handle the create operation
-      createCab(formState);
-    }
-  };
-
-  // Function to create a new cab
-  const createCab = async (newCabData) => {
-    console.log(newCabData);
-    try {
-      const response = await axios.post(
-        `${Config.apiRequest}://${Config.apiHost}:${Config.apiPort}/${Config.apiCab}`,
-        newCabData
-      );
-      console.log(response.data);
-      closeModal();
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  // Function to update an existing cab
-  const updateCab = async (updatedCabData) => {
-    try {
-      const response = await axios.put(
-        `${Config.apiRequest}://${Config.apiHost}:${Config.apiPort}/${Config.apiCab}`,
-        updatedCabData
-      );
-      console.log(response.data);
-      closeModal();
-    } catch (error) {
-      console.error(error);
-    }
+    onSubmit(formState); // Call the onSubmit function passed from CabCRUD.js
   };
 
   return (
@@ -115,7 +76,7 @@ const Cmodal = ({ closeModal, defaultValue }) => {
       }}
     >
       <div className="modal">
-        <form>
+        <form onSubmit={handleSubmit}>
           <h3>Enter Cab details</h3>
           {/* Form fields */}
           <div className="form-group">

@@ -1,7 +1,7 @@
 import "./css/DriverCRUD.css";
 import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Home/Navbar";
+// import Navbar from "./components/Home/Navbar";
 
 // Components
 import Landing from "./components/mainComp/Landing";
@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Navbar /> {/* Add your Navbar component */}
+        {/* <Navbar /> Add your Navbar component */}
         <Suspense fallback={<h1>Loading</h1>}>
           <Routes>
             {/* Define your routes */}
